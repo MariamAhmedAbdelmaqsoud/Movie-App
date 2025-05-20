@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": "c845",
+      "name": "Mariam Ahmed",
+      "email": "amariamahmed01002865393@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "2e05",
+      "name": "ahmed",
+      "email": "ahmed@gmail",
+      "password": "12345"
+    }
+  ]
+}
