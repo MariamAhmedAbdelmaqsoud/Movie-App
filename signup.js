@@ -40,8 +40,8 @@ document.querySelector("#signup-form").addEventListener("submit", function (e) {
       })
         .then((res) => res.json())
         .then((data) => {
-          alert("Sign up successful!");
           window.location.href = "login.html";
+          console.log("Redirecting to login...");
         })
         .catch((err) => console.error("Error during sign up:", err));
     });
