@@ -41,6 +41,12 @@
       "name": "lolo",
       "email": "lolo@h",
       "password": "123"
+    },
+    {
+      "id": "412e",
+      "name": "soko",
+      "email": "soko@meow",
+      "password": "123"
     }
   ]
 }

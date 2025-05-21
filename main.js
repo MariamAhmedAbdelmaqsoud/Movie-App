@@ -3,7 +3,7 @@ const searchBtn = document.querySelector("#btn");
 const filmList = document.querySelector("#film-list");
 const movieLink = document.querySelector("#movie-link");
 function fetchAndDisplayMovies(search) {
-  fetch(`http://www.omdbapi.com/?s=${search}&apikey=2ef5e84f`)
+  fetch(`https://www.omdbapi.com/?s=${search}&apikey=2ef5e84f`)
     .then((response) => response.json())
     .then((data) => {
       if (data.Response === "True") {

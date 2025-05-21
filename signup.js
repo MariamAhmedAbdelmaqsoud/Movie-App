@@ -16,7 +16,7 @@ document.querySelector("#signup-form").addEventListener("submit", function (e) {
     return;
   }
 
-  // check if email already exists
+  // check if email exist
   fetch(`http://localhost:3000/users?email=${email}`)
     .then((res) => res.json())
     .then((users) => {
@@ -41,7 +41,7 @@ document.querySelector("#signup-form").addEventListener("submit", function (e) {
         .then((res) => res.json())
         .then((data) => {
           window.location.href = "login.html";
-          console.log("Redirecting to login...");
+          console.log("to login");
         })
         .catch((err) => console.error("Error during sign up:", err));
     });
