@@ -10,18 +10,19 @@ function fetchAndDisplayMovies(search) {
         filmList.innerHTML = data.Search.map(
           (movie) =>
             `   
-                <div class="card">
-    <img src="${movie.Poster}" class="card-img-top" alt="${movie.Title} Poster">
-    <h5 class="card-title">${movie.Title}</h5>
-    <p class="card-text">Year:  ${movie.Year}</p>
-    <button class="card-btn" onclick="addToFavorites('${movie.imdbID}', '${movie.Title}')">
-      Add to Favorites
-    </button>
-  </div>
+    <div class="card">
+
+      <img src="${movie.Poster}" class="card-img-top" alt="${movie.Title} Poster">
+      <h5 class="card-title">${movie.Title}</h5>
+      <p class="card-text">Year:  ${movie.Year}</p>
+       <button class="card-btn" onclick="addToFavorites('${movie.imdbID}', '${movie.Title}')">
+         Add to Favorites
+       </button>
+     </div>
 
 `
         ).join("");
-        filmList.scrollIntoView({ behavior: "smooth" });
+        // filmList.scrollIntoView({ behavior: "smooth" });
       } else {
       }
     })
@@ -39,6 +40,9 @@ searchBtn.addEventListener("click", () => {
     fetchAndDisplayMovies(search);
   }
 });
+document.addEventListener("DOMContentLoaded", () => {
+  fetchAndDisplayMovies("action");
+});
 movieLink.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -50,7 +54,7 @@ console.log(movieLink);
 const favorites = [];
 function addToFavorites(id, title) {
   if (!favorites.some((movie) => movie.id === id)) {
-    favorites.push({id, title});
+    favorites.push({ id, title });
     document.querySelector("#favorites-count").textContent = favorites.length;
     alert(`${title} has been added to your favorites!`);
   } else {
