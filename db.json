@@ -1,51 +1,9 @@
 {
   "users": [
     {
-      "id": "c845",
+      "id": "3a6a",
       "name": "Mariam Ahmed",
       "email": "amariamahmed01002865393@gmail.com",
-      "password": "12345"
-    },
-    {
-      "id": "2e05",
-      "name": "ahmed",
-      "email": "ahmed@gmail",
-      "password": "12345"
-    },
-    {
-      "id": "71fe",
-      "name": "asia",
-      "email": "asia@1234",
-      "password": "12345"
-    },
-    {
-      "id": "43d7",
-      "name": "dalia",
-      "email": "dalia@gmail",
-      "password": "123"
-    },
-    {
-      "id": "544b",
-      "name": "nour",
-      "email": "nour@gmail",
-      "password": "123"
-    },
-    {
-      "id": "f904",
-      "name": "Mariam",
-      "email": "amarim@gmail",
-      "password": "123"
-    },
-    {
-      "id": "605f",
-      "name": "lolo",
-      "email": "lolo@h",
-      "password": "123"
-    },
-    {
-      "id": "412e",
-      "name": "soko",
-      "email": "soko@meow",
       "password": "123"
     }
   ]
