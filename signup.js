@@ -1,6 +1,5 @@
 document.querySelector("#signup-form").addEventListener("submit", function (e) {
   e.preventDefault();
-
   const name = document.querySelector("#name").value.trim();
   const email = document.querySelector("#email").value.trim();
   const password = document.querySelector("#password").value;
@@ -17,7 +16,7 @@ document.querySelector("#signup-form").addEventListener("submit", function (e) {
   }
 
   // check if email exist
-  fetch(`http://localhost:3000/users?email=${email}`)
+  fetch(`https://harsh-wool-dianella.glitch.me/api/users?email=${email}`)
     .then((res) => res.json())
     .then((users) => {
       if (users.length > 0) {
@@ -33,7 +32,7 @@ document.querySelector("#signup-form").addEventListener("submit", function (e) {
       };
       console.log(newUser);
 
-      fetch(`http://localhost:3000/users`, {
+      fetch(`https://harsh-wool-dianella.glitch.me/api/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newUser),

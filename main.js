@@ -2,7 +2,7 @@ const searchInput = document.querySelector("#search");
 const searchBtn = document.querySelector("#btn");
 const filmList = document.querySelector("#film-list");
 const movieLink = document.querySelector("#movie-link");
-
+// mainly function
 function fetchAndDisplayMovies(search) {
   fetch(`https://www.omdbapi.com/?s=${search}&apikey=2ef5e84f`)
     .then((response) => response.json())
@@ -30,17 +30,18 @@ function fetchAndDisplayMovies(search) {
     });
 }
 
+// search
 searchBtn.addEventListener("click", () => {
   const search = searchInput.value.trim();
   if (search !== "") {
     fetchAndDisplayMovies(search);
   }
 });
-
+// Display Movies
 document.addEventListener("DOMContentLoaded", () => {
   fetchAndDisplayMovies("avengers");
 });
-
+// Display Movies on click
 movieLink.addEventListener("click", (e) => {
   e.preventDefault();
   fetchAndDisplayMovies("action");
@@ -57,7 +58,7 @@ function addToFavorites(id, title) {
     alert(`${title} is already in your favorites.`);
   }
 }
-
+// Details Page
 function goToDetails(id) {
   localStorage.setItem("selectedMovieId", id);
   window.location.href = "details.html";

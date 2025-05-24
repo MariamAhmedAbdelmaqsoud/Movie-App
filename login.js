@@ -6,7 +6,9 @@ document.querySelector("#login-form").addEventListener("submit", function (e) {
     alert("Please fill in all fields.");
     return;
   }
-  fetch(`http://localhost:3000/users?email=${email}&password=${password}`)
+  fetch(
+    `https://harsh-wool-dianella.glitch.me/api/users?email=${email}&password=${password}`
+  )
     .then((res) => res.json())
     .then((users) => {
       console.log(users);

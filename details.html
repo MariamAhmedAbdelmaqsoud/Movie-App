@@ -15,23 +15,58 @@
   </head>
   <body class="bg-dark text-white">
     <div class="container py-5">
-      <div class="row justify-content-center">
-        <div class="col-md-8 text-center">
-          <h2 id="movie-title" class="mb-4"></h2>
+      <div class="row justify-content-center align-items-center">
+        <!-- Poster -->
+        <div class="col-md-6 text-center mb-4 mb-md-0">
           <img
             id="movie-poster"
             src=""
-            class="img-fluid mb-4"
+            class="img-fluid rounded"
             alt="Movie Poster"
             style="max-height: 500px"
           />
-          <p id="movie-year" class="mb-2 fs-5"></p>
-          <p id="movie-type" class="mb-2 fs-5"></p>
-          <p id="movie-plot" class="fs-6 fst-italic"></p>
-          <div class="text-center mt-4">
+          <div class="mt-4">
             <a href="index.html" class="btn btn-outline-secondary">
               <i class="bi bi-arrow-left-circle me-1"></i> Back to Home
             </a>
+          </div>
+        </div>
+
+        <!-- Movie Info -->
+        <div class="col-md-6 text-white">
+          <h2 id="movie-title" class="mb-3"></h2>
+          <p id="movie-year" class="fs-5 mb-2"></p>
+          <p id="movie-type" class="fs-5 mb-2"></p>
+          <p id="movie-plot" class="fs-6 fst-italic"></p>
+          <!-- comment form -->
+          <div class="comments-section mt-5">
+            <h4>Comments</h4>
+            <ul id="comments-list" class="list-group mb-3"></ul>
+
+            <form id="comment-form">
+              <!-- <div class="mb-3">
+                <input
+                  type="text"
+                  id="username"
+                  class="form-control"
+                  placeholder="Your name"
+                  required
+                />
+              </div> -->
+              <div class="mb-3">
+                <textarea
+                  id="comment-text"
+                  class="form-control"
+                  rows="3"
+                  placeholder="Add your comment"
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-outline-secondary">
+                Add Comment
+              </button>
+            </form>
           </div>
         </div>
       </div>
