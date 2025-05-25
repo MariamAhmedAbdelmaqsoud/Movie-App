@@ -63,3 +63,4 @@ function goToDetails(id) {
   localStorage.setItem("selectedMovieId", id);
   window.location.href = "details.html";
 }
+// chatpot
