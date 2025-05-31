@@ -63,4 +63,67 @@ function goToDetails(id) {
   localStorage.setItem("selectedMovieId", id);
   window.location.href = "details.html";
 }
-// chatpot
+// // chatbot
+const toggleBtn = document.querySelector(".chatbot-toggler");
+const chatbot = document.querySelector(".chatbot");
+const iconOpen = toggleBtn.querySelector("i.bi-robot");
+const iconClose = toggleBtn.querySelector("i.bi-x-lg");
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("show-chatbot");
+  chatbot.classList.toggle("show");
+
+  // Toggle icons
+  iconOpen.classList.toggle("d-none");
+  iconClose.classList.toggle("d-none");
+});
+
+// Optional: close from inside
+document.querySelector(".close-chat").addEventListener("click", () => {
+  document.body.classList.remove("show-chatbot");
+  chatbot.classList.remove("show");
+  iconOpen.classList.remove("d-none");
+  iconClose.classList.add("d-none");
+});
+const chatInput = document.querySelector("#text-area");
+const sendChatBtn = document.querySelector("#send-btn");
+const chatbox = document.querySelector(".chatbox");
+
+// Function to create chat messages
+function createChatLi(message, type) {
+  const li = document.createElement("li");
+  li.classList.add("chat", type);
+  if (type === "outgoing") {
+    li.innerHTML = `<p>${message}</p>`;
+  } else {
+    li.innerHTML = `<span class="material-symbols-outlined">smart_toy</span><p>${message}</p>`;
+  }
+  return li;
+}
+
+// Send message handler
+function handleSendMessage() {
+  const message = chatInput.value.trim();
+  if (message === "") return;
+
+  chatbox.appendChild(createChatLi(message, "outgoing"));
+  chatbox.scrollTop = chatbox.scrollHeight;
+  chatInput.value = "";
+
+  //static reply without API
+  setTimeout(() => {
+    chatbox.appendChild(
+      createChatLi("Sorry, I am not connected to AI right now.", "incoming")
+    );
+    chatbox.scrollTop = chatbox.scrollHeight;
+  }, 500);
+}
+
+sendChatBtn.addEventListener("click", handleSendMessage);
+
+chatInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault();
+    handleSendMessage();
+  }
+});

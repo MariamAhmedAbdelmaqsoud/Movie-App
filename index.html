@@ -79,39 +79,39 @@
           Your browser does not support the video tag.
         </video>
       </div>
-      <!-- chatbot -->
-       <section class="show-chatbot">
-       <button class="chatbot-toggler">
-        <span class="material-symbols-outlined">mode_comment</span>
-        <span class="material-symbols-outlined">close</span>
-       </button>
-       <div class="chatbot">
-        <header>
-          <h2>chatbot</h2>
-          <span class="material-symbols-outlined">close</span>
-        </header>
-        <ul class="chatbox">
-          <li class="chat incoming">
-            <span class="material-symbols-outlined">smart_toy</span>
-            <p>Hi there 👋 <br> How can I help you today?</p> 
-          </li>
-          <li class="chat outgoing">
-            <p>Lorem ipsum dolor sit amet consectetur.</p> 
-          </li>
-        </ul>
-        <div class="chat-input">
-          <textarea placeholder="Enter a message..." required></textarea>
-          <span id="send-btn" class="material-symbols-outlined">send</span>
-        </div>
-       </div>
-      </section>
-
       <!-- Film List Container -->
       <div id="film-list" class="card-container">
         <!-- Film items will be displayed here -->
       </div>
     </header>
-    </div>
+    </div><!-- Chatbot Toggle Button -->
+    <button class="chatbot-toggler">
+      <i class="bi bi-robot"></i>
+      <i class="bi bi-x-lg d-none"></i>
+    </button>
+    
+    <!-- Chatbot Box -->
+    <section>
+      <div class="chatbot">
+        <header>
+          <h2>Chatbot</h2>
+          <span class="material-symbols-outlined close-chat">close</span>
+        </header>
+        <ul class="chatbox">
+          <li class="chat incoming">
+            <span class="material-symbols-outlined">smart_toy</span>
+            <p>Hi there 👋 <br> How can I help you today?</p>
+          </li>
+          <li class="chat outgoing">
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+          </li>
+        </ul>
+        <div class="chat-input">
+          <textarea id="text-area" placeholder="Enter a message..." required></textarea>
+          <span id="send-btn" class="material-symbols-outlined">send</span>
+        </div>
+      </div>
+    </section>
   </body>
   <script src="main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
