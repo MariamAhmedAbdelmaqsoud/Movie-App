@@ -63,7 +63,10 @@ function goToDetails(id) {
   localStorage.setItem("selectedMovieId", id);
   window.location.href = "details.html";
 }
-// // chatbot
+const GEMINI_API_KEY = "AIzaSyCF2tREo8RzHEnzsRDW1xtWb4stxQTBMx0";
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
+const chatHistory = [];
+
 const toggleBtn = document.querySelector(".chatbot-toggler");
 const chatbot = document.querySelector(".chatbot");
 const iconOpen = toggleBtn.querySelector("i.bi-robot");
@@ -72,24 +75,21 @@ const iconClose = toggleBtn.querySelector("i.bi-x-lg");
 toggleBtn.addEventListener("click", () => {
   document.body.classList.toggle("show-chatbot");
   chatbot.classList.toggle("show");
-
-  // Toggle icons
   iconOpen.classList.toggle("d-none");
   iconClose.classList.toggle("d-none");
 });
 
-// Optional: close from inside
 document.querySelector(".close-chat").addEventListener("click", () => {
   document.body.classList.remove("show-chatbot");
   chatbot.classList.remove("show");
   iconOpen.classList.remove("d-none");
   iconClose.classList.add("d-none");
 });
+
 const chatInput = document.querySelector("#text-area");
 const sendChatBtn = document.querySelector("#send-btn");
 const chatbox = document.querySelector(".chatbox");
 
-// Function to create chat messages
 function createChatLi(message, type) {
   const li = document.createElement("li");
   li.classList.add("chat", type);
@@ -101,8 +101,40 @@ function createChatLi(message, type) {
   return li;
 }
 
-// Send message handler
-function handleSendMessage() {
+async function generateResponse(userMessage) {
+  chatHistory.push({
+    role: "user",
+    parts: [{ text: userMessage }],
+  });
+
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ contents: chatHistory }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Network error: " + response.statusText);
+    }
+
+    const data = await response.json();
+    const geminiReply =
+      data.candidates?.[0]?.content?.parts?.[0]?.text || "No response";
+
+    chatHistory.push({
+      role: "model",
+      parts: [{ text: geminiReply }],
+    });
+
+    return geminiReply;
+  } catch (err) {
+    console.error(err);
+    return "Sorry, there was an error connecting to Gemini.";
+  }
+}
+
+async function handleSendMessage() {
   const message = chatInput.value.trim();
   if (message === "") return;
 
@@ -110,17 +142,16 @@ function handleSendMessage() {
   chatbox.scrollTop = chatbox.scrollHeight;
   chatInput.value = "";
 
-  //static reply without API
-  setTimeout(() => {
-    chatbox.appendChild(
-      createChatLi("Sorry, I am not connected to AI right now.", "incoming")
-    );
-    chatbox.scrollTop = chatbox.scrollHeight;
-  }, 500);
+  const thinkingLi = createChatLi("Thinking...", "incoming");
+  chatbox.appendChild(thinkingLi);
+  chatbox.scrollTop = chatbox.scrollHeight;
+
+  const reply = await generateResponse(message);
+  thinkingLi.querySelector("p").textContent = reply;
+  chatbox.scrollTop = chatbox.scrollHeight;
 }
 
 sendChatBtn.addEventListener("click", handleSendMessage);
-
 chatInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter" && !e.shiftKey) {
     e.preventDefault();
