@@ -10,7 +10,7 @@
 /* home page */
 .video-container {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100dvh;
   margin-top: 20px;
   overflow: hidden;
   background-color: #000000;
@@ -174,9 +174,11 @@ video {
 }
 @media (max-width: 490px) {
   .video-container {
-    min-height: 50vh;
+    min-height: 30dvh;
     margin-top: 45px;
     overflow: hidden;
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
   video{
     height: 100%;
